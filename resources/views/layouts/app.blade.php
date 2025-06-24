@@ -180,7 +180,10 @@
                     <a href="{{route('products.index')}}" class="block pl-3 py-2 hover:bg-amber-600 font-bold text-lg border-b">Products</a>
                     <a href="" class="block pl-3 py-2 hover:bg-amber-600 font-bold text-lg border-b">Orders</a>
                     <a href="" class="block pl-3 py-2 hover:bg-amber-600 font-bold text-lg border-b">Users</a>
-                    <a href="" class="block pl-3 py-2 hover:bg-amber-600 font-bold text-lg border-b">Logout</a>
+                    <form action="{{route('logout')}}" method="POST" class="block pl-3 py-2 hover:bg-amber-600 font-bold text-lg border-b">
+                        @csrf
+                        <button type="submit" class="w-full text-left">Logout</button>
+                    </form>
                 </div>
             </div>
             <div class="flex-1 p-4">

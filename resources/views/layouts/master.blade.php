@@ -8,14 +8,17 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
+    @php
+        $categories = \App\Models\Category::orderBy('order', 'asc')->get();
+    @endphp
     <nav class="flex justify-between items-center bg-blue-600 py-3 px-12 text-white">
         <h2 class="font-bold text-xl">LOGO</h2>
         <div class="flex gap-4">
             <a href="/">Home</a>
-            <a href="/about">About</a>
-            <a href="#">Services</a>
-            <a href="/contact">Contact</a>
-            <a href="#">Login</a>
+            @foreach ($categories as $category)
+                <a href="">{{$category->name}}</a>
+            @endforeach
+            <a href="/login">Login</a>
         </div>
     </nav>
     @yield('content')

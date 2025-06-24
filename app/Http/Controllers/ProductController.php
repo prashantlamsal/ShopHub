@@ -51,7 +51,7 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
-        $data = $request->validate([
+       $data = $request->validate([
             'name' => 'required',
             'price' => 'required|numeric',
             'discounted_price' => 'nullable|numeric',
@@ -63,7 +63,8 @@ class ProductController extends Controller
 
         $product = Product::findOrFail($id);
 
-        if($request->hasFile('photopath')) {
+        if($request->hasFile('photopath'))
+        {
             //handle file upload
             $file = $request->file('photopath');
             $filename = time() . '.' . $file->getClientOriginalExtension();
@@ -81,6 +82,13 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
-
+        $product = Product::findOrFail($id);
+        //unlink old photo
+        $oldphotopath = public_path('images/products/' . $product->photopath);
+        if (file_exists($oldphotopath)) {
+            unlink($oldphotopath);
+        }
+        $product->delete();
+        return redirect()->route('products.index')->with('success', 'Product deleted successfully.');
     }
 }

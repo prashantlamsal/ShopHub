@@ -1,7 +1,7 @@
 @extends('layouts.app')
-@section('title', 'Create Product')
+@section('title', 'Edit Product')
 @section('content')
-<form action="{{route('products.update', $product->id)}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('products.update',$product->id)}}" method="POST" enctype="multipart/form-data">
         @csrf
         <select name="category_id" id="" class="border border-gray-300 p-2 rounded w-full mb-4">
             @foreach($categories as $category)
@@ -34,7 +34,7 @@
         @enderror
 
         <p>Current Picture:</p>
-        <img src="{{ asset('images/products/' . $product->photopath) }}" alt="" class="h-16 mb-4">
+        <img src="{{asset('images/products/'.$product->photopath)}}" alt="" class="h-24">
         <input type="file" name="photopath" class="border border-gray-300 p-2 rounded w-full mb-4">
         @error('photopath')
             <div class="text-red-500 mb-2 -mt-3">{{ $message }}</div>
@@ -42,7 +42,7 @@
 
 
         <div class="flex justify-center">
-            <button type="submit" class="bg-blue-500 px-4 py-2 rounded text-white">Create Product</button>
+            <button type="submit" class="bg-blue-500 px-4 py-2 rounded text-white">Update Product</button>
             <a href="{{route('products.index')}}" class="bg-gray-300 px-4 py-2 rounded text-black ml-2">Cancel</a>
         </div>
     </form>

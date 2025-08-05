@@ -35,16 +35,20 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        try {
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ]);
 
-        event(new Registered($user));
+            event(new Registered($user));
 
-        Auth::login($user);
+            Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+            return redirect(route('dashboard', absolute: false))->with('success', 'Account created successfully! Welcome to ShopHub!');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to create account. Please try again.');
+        }
     }
 }

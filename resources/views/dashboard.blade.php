@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.app')
 @section('title', 'Admin Dashboard - ShopHub')
 @section('content')
     <div class="max-w-7xl mx-auto px-4 py-8">

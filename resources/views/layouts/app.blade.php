@@ -90,7 +90,7 @@
                 <!-- Top Navigation -->
                 <header class="bg-white shadow-sm sticky top-0 z-40">
                     <div class="flex items-center justify-between px-8 py-4">
-                        <h1 class="text-2xl font-bold text-blue-900 tracking-wide">@yield('title')</h1>
+              
                         <div class="flex items-center space-x-4">
                             <button class="text-gray-500 hover:text-blue-700 focus:outline-none relative">
                                 <i class="fas fa-bell text-xl"></i>
@@ -106,20 +106,9 @@
 
                 <!-- Page Content -->
                 <main class="flex-1 overflow-y-auto p-8 bg-gray-50">
-                    <div class="mb-8">
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <h2 class="text-xl font-semibold text-blue-900">@yield('title')</h2>
-                                <p class="text-sm text-gray-500">Overview and statistics</p>
-                            </div>
-                            <div class="flex space-x-3">
-                                <button class="px-4 py-2 bg-blue-700 text-white rounded-md hover:bg-blue-800 transition-colors">
-                                    <i class="fas fa-plus mr-2"></i> Add New
-                                </button>
-                            </div>
-                        </div>
-                        <div class="h-1 bg-gradient-to-r from-blue-500 to-blue-300 rounded-full mt-2"></div>
-                    </div>
+                    
+                        
+                  
                     <div class="bg-white rounded-xl shadow-sm p-8">
                         @yield('content')
                     </div>
